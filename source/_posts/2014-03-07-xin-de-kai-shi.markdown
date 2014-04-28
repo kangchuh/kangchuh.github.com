@@ -6,4 +6,8 @@ comments: true
 categories: 随笔
 ---
 
-### My first blog, Welcome ! Start a new journey ! ###
+*我的第一篇博客, 欢迎*
+
+> My first blog, Welcome ! Start a new journey ! 
+> 
+> 我的第一篇博客, 开始新的旅程 ！

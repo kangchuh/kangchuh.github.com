@@ -4,7 +4,7 @@
   <title><![CDATA[Angzn's Blog]]></title>
   <link href="http://kangchuh.github.io/atom.xml" rel="self"/>
   <link href="http://kangchuh.github.io/"/>
-  <updated>2014-03-07T23:30:09+08:00</updated>
+  <updated>2014-04-28T21:49:09+08:00</updated>
   <id>http://kangchuh.github.io/</id>
   <author>
     <name><![CDATA[Angzn]]></name>
@@ -12,6 +12,147 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[iOS 7 自定义Back按钮 与 Pop Interactive Gesture 问题]]></title>
+    <link href="http://kangchuh.github.io/blog/2014/04/28/ios-7-zi-ding-yi-backan-niu-yu-pop-interactive-gesturewen-ti/"/>
+    <updated>2014-04-28T20:40:05+08:00</updated>
+    <id>http://kangchuh.github.io/blog/2014/04/28/ios-7-zi-ding-yi-backan-niu-yu-pop-interactive-gesturewen-ti</id>
+    <content type="html"><![CDATA[<h3>1、自定义Back按钮</h3>
+
+<p>iOS中很多时候我们都会自定义返回按钮，也是一件easy的事，类似如下：</p>
+
+<pre><code>// 自定义返回按钮
+ - (void)showNavBackButton
+ {
+     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+     [backButton addTarget:self action:@selector(backButtonAction:)
+          forControlEvents:UIControlEventTouchUpInside];
+     [backButton setBackgroundImage:[UIImage imageNamed:@"00_back_button"]
+                           forState:UIControlStateNormal];
+     [backButton setTitle:kLoc(@"Back") forState:UIControlStateNormal];
+     [backButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 5, 1, 0)];
+     backButton.titleLabel.font = kMediumFont(12);
+     backButton.frame = CGRectMake(0, 0, 51, 31);
+     self.navigationItem.leftBarButtonItem
+     = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+}
+</code></pre>
+
+<p>但是，这样在iOS7下Pop interactive gesture就不好使了。</p>
+
+<p>这里 <a href="http://stuartkhall.com/posts/ios-7-development-tips-tricks-hacks">Here</a> 有一个解决方法。</p>
+
+<p>但是，测试发现在栈中推入一个controller后，快速向左平滑，将会引起崩溃。</p>
+
+<p>查看崩溃日志，发现如下信息：</p>
+
+<p><strong>nested pop animation can result in corrupted navigation bar</strong></p>
+
+<h3>2、解决Pop interactive gesture问题</h3>
+
+<p>优化的解决方案是简单的让NavigationController自己成为响应的接受者，最好用一个UINavigationController的子类。</p>
+
+<p>1)在过渡的时候禁用interactivePopGestureRecognizer</p>
+
+<p>2)当新的视图控制器加载完成后再启用，建议使用UINavigationController的子类操作</p>
+
+<pre><code>// 自定义NavigationController
+@interface DCBaseNavigationController ()
+&lt;
+UINavigationControllerDelegate,
+UIGestureRecognizerDelegate
+&gt;
+@end
+
+@implementation DCBaseNavigationController
+
+- (void)dealloc
+{
+    self.interactivePopGestureRecognizer.delegate = nil;
+    self.delegate = nil;
+
+    [super dealloc];
+}
+
+#pragma mark - View lifecycle
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+
+    if ([self respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.interactivePopGestureRecognizer.delegate = self;
+        self.delegate = self;
+    }
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Override
+
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    // Hijack the push method to disable the gesture
+    if ([self respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.interactivePopGestureRecognizer.enabled = NO;
+    }
+
+    [super pushViewController:viewController animated:animated];
+}
+
+#pragma mark - UINavigationControllerDelegate
+
+- (void)navigationController:(UINavigationController *)navigationController
+       didShowViewController:(UIViewController *)viewController
+                    animated:(BOOL)animate
+{
+    if ([navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        navigationController.interactivePopGestureRecognizer.enabled = YES;
+    }
+}
+
+@end
+</code></pre>
+
+<h3>3、Pop interactive gesture冲突，造成页面假死问题</h3>
+
+<p>我遇到的情况是，Push/Pop页面时，没有立即得到想要的效果，页面没有显出出来，NavigationController的didShowViewController:回调方法也没有调用。</p>
+
+<p>页面布局情况是这样的：视图A，有一个Pan手势；视图B是TabBarController，其ViewControllers都是NavigationController。视图B是视图A的子视图。</p>
+
+<p>后来找到原因是：navigationController的interactive pop手势与视图A的pan手势冲突。</p>
+
+<p>具体原因是：rootViewController加载时，调用了didShowViewController:，设置interactivePopGestureRecognizer可用，其实我们并不需要在root的时候也触发这个手势。所以稍加优化如下：</p>
+
+<pre><code>// 优化
+- (void)navigationController:(UINavigationController *)navigationController
+       didShowViewController:(UIViewController *)viewController
+                    animated:(BOOL)animate
+{
+    if ([navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        //if ([[navigationController.viewControllers firstObject] isEqual:viewController]) {
+        if ([navigationController.viewControllers count] == 1) {
+            // Disable the interactive pop gesture in the rootViewController of navigationController
+            navigationController.interactivePopGestureRecognizer.enabled = NO;
+        } else {
+            // Enable the interactive pop gesture
+            navigationController.interactivePopGestureRecognizer.enabled = YES;
+        }
+    }
+}
+</code></pre>
+
+<p>当前显示的是root时，设置interactivePopGestureRecognizer不可用，非root时设置interactivePopGestureRecognizer可用。</p>
+
+<p>参考文章：<a href="http://keighl.com/post/ios7-interactive-pop-gesture-custom-back-button/">http://keighl.com/post/ios7-interactive-pop-gesture-custom-back-button/</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[新的开始]]></title>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Xcode | Angzn's Blog]]></title>
+  <link href="http://kangchuh.github.io/blog/categories/xcode/atom.xml" rel="self"/>
+  <link href="http://kangchuh.github.io/"/>
+  <updated>2014-10-23T01:41:03+08:00</updated>
+  <id>http://kangchuh.github.io/</id>
+  <author>
+    <name><![CDATA[Angzn]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Xcode Tips]]></title>
+    <link href="http://kangchuh.github.io/blog/2014/10/21/xcode-tips/"/>
+    <updated>2014-10-21T22:58:16+08:00</updated>
+    <id>http://kangchuh.github.io/blog/2014/10/21/xcode-tips</id>
+    <content type="html"><![CDATA[<br/>
+
+
+<p>在使用Xcode的时候，经常会遇到各种“莫名其妙”的‘BUG’。本来写完一段完美的代码，想来测试一下自己的成果，结果，<strong>run</strong>，Xcode给你各种莫名的xxx信息，这会你要恼羞成怒了。</p>
+
+<h3>一、问题</h3>
+
+<ol>
+<li><strong>Could not inspect the application package.</strong> <br/>
+在 Xcode 6 上出现一次正常，一次弹出 Could not inspect the application package 错误问题，原因可能是：
+
+<ul>
+<li>项目 <strong>Product Name</strong> 包含非拉丁文（即：包含中文），所以只需要把你的 Product Name 修改一下就 OK 可以；</li>
+<li>项目包含 <em>resource / resources</em> 文件夹，可能与系统内部冲突，所以把名称改一下就可以；</li>
+<li>项目在运行中，没有 stop 就直接 run 可能也会导致此问题，这个问题，养成好习惯，先 stop 在 run。</li>
+</ul>
+
+
+<p> 参考：<a href="http://bit.ly/ZCNvOq">Xcode: Could not inspect the application package</a></p></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+</feed>

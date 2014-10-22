@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Angzn's Blog</title>
+  <title>iOS 7 自定义Back按钮 与 Pop Interactive Gesture 问题 - Angzn's Blog</title>
   <meta name="author" content="Angzn">
 
   
-  <meta name="description" content="
-">
+  <meta name="description" content="1、自定义Back按钮 iOS中很多时候我们都会自定义返回按钮，也是一件easy的事，类似如下： // 自定义返回按钮 - (void)showNavBackButton { UIButton *backButton = [UIButton buttonWithType: &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://kangchuh.github.io">
+  <link rel="canonical" href="http://kangchuh.github.io/blog/2014/04/28/ios-7-zi-ding-yi-backan-niu-yu-pop-interactive-gesturewen-ti">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Angzn's Blog" type="application/atom+xml">
@@ -62,153 +61,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/10/21/shi-yong-octopress-da-jian-bo-ke-ji-shi-yong-tips/">使用 Octopress 搭建博客及使用 Tips</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-10-21T23:02:02+08:00" pubdate data-updated="true">Oct 21<span>st</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/10/21/xcode-tips/">Xcode Tips</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-10-21T22:58:16+08:00" pubdate data-updated="true">Oct 21<span>st</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><br/>
-
-
-<p>在使用Xcode的时候，经常会遇到各种“莫名其妙”的‘BUG’。本来写完一段完美的代码，想来测试一下自己的成果，结果，<strong>run</strong>，Xcode给你各种莫名的xxx信息，这会你要恼羞成怒了。</p>
-
-<h3>一、问题</h3>
-
-<ol>
-<li><strong>Could not inspect the application package.</strong> <br/>
-在 Xcode 6 上出现一次正常，一次弹出 Could not inspect the application package 错误问题，原因可能是：
-
-<ul>
-<li>项目 <strong>Product Name</strong> 包含非拉丁文（即：包含中文），所以只需要把你的 Product Name 修改一下就 OK 可以；</li>
-<li>项目包含 <em>resource / resources</em> 文件夹，可能与系统内部冲突，所以把名称改一下就可以；</li>
-<li>项目在运行中，没有 stop 就直接 run 可能也会导致此问题，这个问题，养成好习惯，先 stop 在 run。</li>
-</ul>
-
-
-<p> 参考：<a href="http://bit.ly/ZCNvOq">Xcode: Could not inspect the application package</a></p></li>
-</ol>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/10/21/ios-tips/">iOS Tips</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-10-21T22:56:20+08:00" pubdate data-updated="true">Oct 21<span>st</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><br/>
-
-
-<p>在实际开发过程中，经常会遇到一些小问题，然而，这个小问题经常会搞的你无比的郁闷。这里做个记录:</p>
-
-<h3>一、UIButton</h3>
-
-<ol>
-<li>当按钮属性 <em><strong>enable</strong>=NO</em> 时，设置按钮的 <strong>title</strong> 是无效的，按钮 <strong>title</strong> 不能修改。</li>
-</ol>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/04/28/ios-7-zi-ding-yi-backan-niu-yu-pop-interactive-gesturewen-ti/">iOS 7 自定义Back按钮 与 Pop Interactive Gesture 问题</a></h1>
+      <h1 class="entry-title">iOS 7 自定义Back按钮 与 Pop Interactive Gesture 问题</h1>
     
     
       <p class="meta">
@@ -231,7 +89,7 @@
   </header>
 
 
-  <div class="entry-content"><h3>1、自定义Back按钮</h3>
+<div class="entry-content"><h3>1、自定义Back按钮</h3>
 
 <p>iOS中很多时候我们都会自定义返回按钮，也是一件easy的事，类似如下：</p>
 
@@ -365,22 +223,16 @@ UIGestureRecognizerDelegate
 
 <p>参考文章：<a href="http://keighl.com/post/ios7-interactive-pop-gesture-custom-back-button/">http://keighl.com/post/ios7-interactive-pop-gesture-custom-back-button/</a></p>
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/03/07/xin-de-kai-shi/">新的开始</a></h1>
-    
-    
-      <p class="meta">
-        
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Angzn</span></span>
+
+      
 
 
 
@@ -392,39 +244,38 @@ UIGestureRecognizerDelegate
   
 
 
-<time datetime="2014-03-07T23:23:58+08:00" pubdate data-updated="true">Mar 7<span>th</span>, 2014</time>
-        
-      </p>
+<time datetime="2014-04-28T20:40:05+08:00" pubdate data-updated="true">Apr 28<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ios/'>iOS</a>
+  
+</span>
+
+
+    </p>
     
-  </header>
-
-
-  <div class="entry-content"><br />
-
-
-<p><em>我的第一篇博客, 欢迎</em></p>
-
-<blockquote><p>My first blog, Welcome ! Start a new journey !</p>
-
-<p>我的第一篇博客, 开始新的旅程 ！</p></blockquote>
-
-<br />
-
-
-<p>我的第一篇博客, 欢迎大家 !</p>
+      <div class="sharing">
+  
+  
+  
 </div>
-  
-  
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/03/07/xin-de-kai-shi/" title="Previous Post: 新的开始">&laquo; 新的开始</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/10/21/ios-tips/" title="Next Post: iOS Tips">iOS Tips &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
 
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
 </div>
+
 <aside class="sidebar">
   
     <section>
@@ -460,6 +311,7 @@ UIGestureRecognizerDelegate
 
   
 </aside>
+
 
     </div>
   </div>

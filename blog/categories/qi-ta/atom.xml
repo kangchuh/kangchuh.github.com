@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 其他 | Angzn's Blog]]></title>
+  <link href="http://kangchuh.github.io/blog/categories/qi-ta/atom.xml" rel="self"/>
+  <link href="http://kangchuh.github.io/"/>
+  <updated>2014-10-23T01:41:03+08:00</updated>
+  <id>http://kangchuh.github.io/</id>
+  <author>
+    <name><![CDATA[Angzn]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[使用 Octopress 搭建博客及使用 Tips]]></title>
+    <link href="http://kangchuh.github.io/blog/2014/10/21/shi-yong-octopress-da-jian-bo-ke-ji-shi-yong-tips/"/>
+    <updated>2014-10-21T23:02:02+08:00</updated>
+    <id>http://kangchuh.github.io/blog/2014/10/21/shi-yong-octopress-da-jian-bo-ke-ji-shi-yong-tips</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+</feed>

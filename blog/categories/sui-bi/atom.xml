@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 随笔 | Angzn's Blog]]></title>
+  <link href="http://kangchuh.github.io/blog/categories/sui-bi/atom.xml" rel="self"/>
+  <link href="http://kangchuh.github.io/"/>
+  <updated>2014-10-23T01:41:03+08:00</updated>
+  <id>http://kangchuh.github.io/</id>
+  <author>
+    <name><![CDATA[Angzn]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[新的开始]]></title>
+    <link href="http://kangchuh.github.io/blog/2014/03/07/xin-de-kai-shi/"/>
+    <updated>2014-03-07T23:23:58+08:00</updated>
+    <id>http://kangchuh.github.io/blog/2014/03/07/xin-de-kai-shi</id>
+    <content type="html"><![CDATA[<br />
+
+
+<p><em>我的第一篇博客, 欢迎</em></p>
+
+<blockquote><p>My first blog, Welcome ! Start a new journey !</p>
+
+<p>我的第一篇博客, 开始新的旅程 ！</p></blockquote>
+
+<br />
+
+
+<p>我的第一篇博客, 欢迎大家 !</p>
+]]></content>
+  </entry>
+  
+</feed>

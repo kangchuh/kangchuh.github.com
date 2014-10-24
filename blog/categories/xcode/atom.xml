@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Xcode | Angzn's Blog]]></title>
   <link href="http://kangchuh.github.io/blog/categories/xcode/atom.xml" rel="self"/>
   <link href="http://kangchuh.github.io/"/>
-  <updated>2014-10-24T22:35:33+08:00</updated>
+  <updated>2014-10-24T22:51:32+08:00</updated>
   <id>http://kangchuh.github.io/</id>
   <author>
     <name><![CDATA[Angzn]]></name>
@@ -26,19 +26,24 @@
 <h3>一、问题</h3>
 
 <ol>
-<li><strong>Could not inspect the application package.</strong> <br/>
-在 Xcode 6 上出现一次正常，一次弹出 Could not inspect the application package 错误问题，原因可能是：
-
-<ul>
-<li>项目 <strong>Product Name</strong> 包含非拉丁文（即：包含中文），所以只需要把你的 Product Name 修改一下就 OK 可以；</li>
-<li>项目包含 <em>resource / resources</em> 文件夹，可能与系统内部冲突，所以把名称改一下就可以；</li>
-<li>项目在运行中，没有 stop 就直接 run 可能也会导致此问题，这个问题，养成好习惯，先 stop 在 run。</li>
-</ul>
-
-
-<p> 参考：<a href="http://bit.ly/ZCNvOq">Xcode: Could not inspect the application package</a></p></li>
+<li><strong>Could not inspect the application package.</strong></li>
 </ol>
 
+
+<br/>
+
+
+<p>在 Xcode 6 上出现一次正常，一次弹出 Could not inspect the application package 错误问题，原因可能是：</p>
+
+<pre><code>* 项目 **Product Name** 包含非拉丁文（即：包含中文），所以只需要把你的 Product Name 修改一下就 OK 可以；
+* 项目包含 *resource / resources* 文件夹，可能与系统内部冲突，所以把名称改一下就可以；
+* 项目在运行中，没有 stop 就直接 run 可能也会导致此问题，这个问题，养成好习惯，先 stop 在 run。
+</code></pre>
+
+<br/>
+
+
+<p>参考：<a href="http://bit.ly/ZCNvOq">Xcode: Could not inspect the application package</a></p>
 ]]></content>
   </entry>
   

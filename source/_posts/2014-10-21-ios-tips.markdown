@@ -6,6 +6,9 @@ comments: true
 categories: iOS
 ---
 <br/>
+
 在实际开发过程中，经常会遇到一些小问题，然而，这个小问题经常会搞的你无比的郁闷。这里做个记录:
+
 ###一、UIButton
+
 	1. 当按钮属性 ***enable**=NO* 时，设置按钮的 **title** 是无效的，按钮 **title** 不能修改。
